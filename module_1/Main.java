@@ -11,7 +11,7 @@ public class Main {
 
     // Пытаемся поменять поле у ссылки
     mutable.myChangeableField = "Changed string 1";
-    // Пытаемся поменять поле
+    // Пытаемся поменять поле у иммутабельного объекта
     immutable.getMyChangeableClass().myChangeableField = "Changed string 2";
 
     // Поле изменить не получилось
