@@ -1,4 +1,4 @@
-package module_3;
+package module_3.StrategyDemo;
 
 public class StrategyDemo {
   public static void main(String[] args) {
