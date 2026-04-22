@@ -5,8 +5,8 @@
 # Решение
 
 - [Стратегия](./StrategyDemo/StrategyDemo.java)
-- [Цепочка обязанностей](./ChainOfResponsibilityDemo/ChainOfResponsibilityDemo.java.java)
-- [Билдер](./BuilderDemo/BuilderDemo.java.java)
-- [Прокси](./ProxyDemo/ProxyDemo.java.java)
-- [Декоратор](./DecoratorDemo/DecoratorDemo.java.java)
-- [Адаптер](./AdapterDemo/AdapterDemo.java.java)
+- [Цепочка обязанностей](./ChainOfResponsibilityDemo/ChainOfResponsibilityDemo.java)
+- [Билдер](./BuilderDemo/BuilderDemo.java)
+- [Прокси](./ProxyDemo/ProxyDemo.java)
+- [Декоратор](./DecoratorDemo/DecoratorDemo.java)
+- [Адаптер](./AdapterDemo/AdapterDemo.java)
