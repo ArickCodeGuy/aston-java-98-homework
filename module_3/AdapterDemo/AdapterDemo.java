@@ -1,6 +1,5 @@
-package module_3;
+package module_3.AdapterDemo;
 
-// Адаптер демо
 public class AdapterDemo {
   public static void main(String[] args) {
     // Создаем круг
@@ -13,11 +12,11 @@ public class AdapterDemo {
   }
 }
 
-interface Figure2D {
+interface Shape {
   double getArea();
 }
 
-class Circle implements Figure2D {
+class Circle implements Shape {
   private double radius;
 
   Circle(double radius) {
@@ -34,7 +33,7 @@ class Circle implements Figure2D {
   }
 }
 
-class Square implements Figure2D {
+class Square implements Shape {
   private double side;
 
   Square(double side) {
@@ -51,11 +50,11 @@ class Square implements Figure2D {
   }
 }
 
-interface Figure2DAdapter<T extends Figure2D, K extends Figure2D> {
+interface ShapeAdapter<T extends Shape, K extends Shape> {
   K convert(T figure);
 }
 
-class CircleToSquareAdapter implements Figure2DAdapter<Circle, Square> {
+class CircleToSquareAdapter implements ShapeAdapter<Circle, Square> {
   @Override
   public Square convert(Circle circle) {
     return new Square(circle.getRadius() * 2);
