@@ -2,34 +2,40 @@ package module_3.ProxyDemo;
 
 public class ProxyDemo {
   public static void main(String[] args) {
-    Hawk hawk = new Hawk();
-    HawkProxy hawkProxy = new HawkProxy(hawk);
+    TV tv = new SamsungRemoteController(new SamsungTV());
 
-    hawkProxy.fly();
+    tv.turnOn();
+    tv.turnOn();
   }
 }
 
-interface Bird {
-  void fly();
+interface TV {
+  void turnOn();
 }
 
-class Hawk implements Bird {
+class SamsungTV implements TV {
   @Override
-  public void fly() {
-    System.out.println("Hawk: fly");
+  public void turnOn() {
+    System.out.println("Samsung is now turned on");
   }
 }
 
-class HawkProxy implements Bird {
-  private Hawk hawk;
+class SamsungRemoteController implements TV {
+  private boolean isTvTurnedOn;
+  private final SamsungTV samsungTV;
 
-  HawkProxy(Hawk hawk) {
-    this.hawk = hawk;
+  SamsungRemoteController(SamsungTV samsungTV) {
+    this.samsungTV = samsungTV;
   }
 
   @Override
-  public void fly() {
-    System.out.println("Proxy: fly");
-    hawk.fly();
+  public void turnOn() {
+    if (isTvTurnedOn) {
+      System.out.println("Samsung TV is already turned on");
+    } else {
+      System.out.println("Turning on TV");
+      samsungTV.turnOn();
+      isTvTurnedOn = true;
+    }
   }
 }
