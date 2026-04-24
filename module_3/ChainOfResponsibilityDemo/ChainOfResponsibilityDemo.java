@@ -14,13 +14,16 @@ public class ChainOfResponsibilityDemo {
     authChain.pushValidator(new UserPasswordValidator());
 
     System.out.println("Validating user1: " + user1);
-    authChain.validate(user1);
+    System.out.println(authChain.validate(user1));
+
     System.out.println("Validating user2: " + user2);
-    authChain.validate(user2);
+    System.out.println(authChain.validate(user2));
+
     System.out.println("Validating user3: " + user3);
-    authChain.validate(user3);
+    System.out.println(authChain.validate(user3));
+
     System.out.println("Validating user4: " + user4);
-    authChain.validate(user4);
+    System.out.println(authChain.validate(user4));
   }
 }
 
