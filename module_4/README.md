@@ -5,5 +5,5 @@
 
 # Решение
 
-1. [DeadLock](./DeadLock.java), [LiveLock](./LiveLock.java)
-2. [ThereadsDemo](./ThreadsDemo.javaLiveLock)
+1. [DeadLock](./DeadLock/DeadLock.java), [LiveLock](./LiveLock/LiveLock.java)
+2. [ThereadsDemo](./ThreadsDemo/ThreadsDemo.java)

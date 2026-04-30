@@ -1,4 +1,4 @@
-package module_4;
+package module_4.DeadLock;
 
 import java.util.ArrayList;
 import java.util.List;
