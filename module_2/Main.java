@@ -5,6 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 
 public class Main {
@@ -12,31 +13,20 @@ public class Main {
     List<Book> books = readBooks();
     List<Student> students = readStudents(books);
 
-    students.stream().forEach(s -> {
-      // Вывести в консоль каждого студента (переопределите toString)
-      System.out.println(s.toString());
-      // Получить для каждого студента список книг
-      List<Book> b = s.books;
-    });
-
-    // А дальше как?
-
-    // Получить книги
-    // У меня уже есть на руках список книг `books`. Это то что нужно?
-
-    // Отсортировать книги по количеству страниц (Не забывайте про условия для
-    // сравнения объектов)
-    // .sort мне вернет void. Нужно PriorityQueue внутри forEach использовать?
-    // Как тогда дальше со стримом работать?
-
-    // Оставить только уникальные книги
-    // Отфильтровать книги, оставив только те, которые были выпущены после 2000 года
-    // Ограничить стрим на 3 элементах
-    // Получить из книг годы выпуска
-    // При помощи методов короткого замыкания (почитайте самостоятельно что это
-    // такое) вернуть Optional от года
-    // При помощи методов получения значения из Optional вывести в консоль год
-    // выпуска найденной книги, либо запись о том, что такая книга отсутствует
+    students
+        .stream()
+        .peek(System.out::println) // Вывести каждого студента
+        .map(Student::getBooks) // Получить список книг у каждого
+        .flatMap(List::stream) // Превратить в поток книг
+        .sorted(Comparator.comparingLong(b -> b.pages)) // Сортировка по страницам
+        .distinct() // Только уникальные
+        .filter(b -> b.publish_year > 2000) // Книги после 2000
+        .limit(3) // Только 3
+        .map(b -> b.publish_year) // Получить годы
+        .findFirst() // short-circuit -> Optional<Integer>
+        .ifPresentOrElse(
+            year -> System.out.println("Year: " + year),
+            () -> System.out.println("No book found"));
   }
 
   public static List<Book> readBooks() {
@@ -109,6 +99,10 @@ class Student {
 
   public String toString() {
     return id + " | " + name + " | " + books.toString();
+  }
+
+  public List<Book> getBooks() {
+    return books;
   }
 }
 
